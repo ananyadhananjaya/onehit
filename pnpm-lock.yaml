@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@ananyadhananjaya/eslint-config-basic': ^4.0.0
+  '@ananyadhananjaya/prettier-config': ^1.0.0
   '@types/react': ^18.0.15
   '@types/react-dom': ^18.0.6
   '@typescript-eslint/eslint-plugin': ^5.31.0
@@ -23,6 +24,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
 
 devDependencies:
+  '@ananyadhananjaya/prettier-config': 1.0.0
   '@types/react': 18.0.15
   '@types/react-dom': 18.0.6
   '@typescript-eslint/eslint-plugin': 5.31.0_d5zwcxr4bwkhmuo464cb3a2puu
@@ -53,6 +55,10 @@ packages:
     dependencies:
       eslint: 8.20.0
     dev: false
+
+  /@ananyadhananjaya/prettier-config/1.0.0:
+    resolution: {integrity: sha512-yuJZJD7wqUGcwlNEuIZ/0J0vJFAiadxwKRjz+S5cIkxxooMz8gHHRdrjY3yFR0v1wR7NxL1KvJ42nFviPeWINA==}
+    dev: true
 
   /@babel/code-frame/7.18.6:
     resolution: {integrity: sha512-TDCmlK5eOvH+eH7cdAFlNXeVJqWIQ7gW9tY1GJIpUtFb6CmjVyq2VM3u71bOyR8CRihcCgMUYoDNyLXao3+70Q==}
