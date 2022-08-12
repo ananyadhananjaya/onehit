@@ -18,6 +18,7 @@
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint"],
+  "ignorePatterns": ["*.html"],
   "rules": {
     "no-unused-vars": "error",
     "no-var": "error",
