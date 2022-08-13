@@ -7,7 +7,7 @@ function App() {
     <div className="h-screen bg-blue-50">
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/oneHit" element={<MainPage />} />
+        <Route path="/onehit" element={<MainPage />} />
       </Routes>
     </div>
   )

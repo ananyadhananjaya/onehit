@@ -3,12 +3,12 @@ import { getFirestore } from 'firebase/firestore/lite'
 import { getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: `{process.env.APIKEY}`,
-  authDomain: `{process.env.AUTHDOMAIN}`,
-  projectId: `{process.env.PROJECTID}`,
-  storageBucket: `{process.env.STORAGEBUCKET}`,
-  messagingSenderId: `{process.env.MESSAGINGSENDERID}`,
-  appId: `{process.env.APPID}`
+  apiKey: 'AIzaSyDhoeYZ3XT01VDlKxoHH9YbFS6uWbQVFc4',
+  authDomain: 'onehit-c321d.firebaseapp.com',
+  projectId: 'onehit-c321d',
+  storageBucket: 'onehit-c321d.appspot.com',
+  messagingSenderId: '731852775280',
+  appId: '1:731852775280:web:57768a539d85e76b29b9b5'
 }
 
 const app = initializeApp(firebaseConfig)

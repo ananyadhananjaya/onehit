@@ -9,7 +9,7 @@ const MainPage = () => {
     let authToken = sessionStorage.getItem('Auth Token')
 
     if (authToken) {
-      navigate('/oneHit')
+      navigate('/onehit')
     }
 
     if (!authToken) {
