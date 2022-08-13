@@ -1,5 +1,14 @@
+import { Routes, Route } from 'react-router-dom'
+import LoginPage from './Pages/LoginPage'
+
 function App() {
-  return <div className="shadow-lg text-slate-600 text-center">Hello world</div>
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+      </Routes>
+    </div>
+  )
 }
 
 export default App
