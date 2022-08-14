@@ -1,10 +1,9 @@
-import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../api/firebase.config'
-import DemoLogin from '../DemoLogin'
 
-const LoginComponent = () => {
+const SignUpPage = () => {
   const navigate = useNavigate()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -15,26 +14,28 @@ const LoginComponent = () => {
     setErrorFlag(false)
   }, [email, password])
 
-  const login = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential: any) => {
+  const signUp = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
         // Signed in
         const user = userCredential.user
-        const refreshToken = userCredential._tokenResponse.refreshToken
-        sessionStorage.setItem('Auth Token', refreshToken)
-        console.log('user', user)
-
-        //ananya.dhananjaya1998@gmail.com
-        //test123
+        sessionStorage.setItem('Auth Token', user.refreshToken)
         navigate('/onehit')
+        // ...
       })
       .catch((error) => {
-        switch (error.code) {
+        const errorCode = error.code
+        console.log(errorCode)
+        const errorMessage = error.message
+        switch (errorCode) {
           case 'auth/wrong-password':
             setErrorMessage('Invalid Password')
             break
           case 'auth/user-not-found':
             setErrorMessage('Invalid Email')
+            break
+          case 'auth/weak-password':
+            setErrorMessage('Please have a strong Password')
             break
           default:
             setErrorMessage('Something went wrong. Please try again later.')
@@ -52,10 +53,10 @@ const LoginComponent = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col justify-center items-center bg-blue-50">
+      <div className="flex flex-col p-10 justify-center items-center bg-blue-50">
         <div className="items-start">
           <div className="my-8 text-2xl font-medium text-center text-gray-600">
-            Sign In!
+            Sign Up!
           </div>
 
           <div>
@@ -68,6 +69,7 @@ const LoginComponent = () => {
               />
             </div>
           </div>
+
           <div>
             <div className="my-3">Password</div>
             <div>
@@ -78,20 +80,20 @@ const LoginComponent = () => {
               />
             </div>
           </div>
-          <div className="text-slate-500 py-2 hover:text-slate-700">
-            New User?{' '}
-            <Link className="hover:text-blue-500" to="/signup">
-              Sign up!
-            </Link>
-          </div>
-          <div className="flex gap-2 my-5 items-center">
+
+          <div className="flex gap-4 my-5 items-center">
             <button
               className="bg-blue-100 px-8 rounded-xl p-2 shadow-2xl text-gray-600 font-medium hover:shadow-soft-ui hover:bg-blue-50"
-              onClick={login}
+              onClick={signUp}
+            >
+              Sign Up
+            </button>
+            <button
+              className="bg-blue-100 px-8 rounded-xl p-2 w-32 shadow-2xl text-gray-600 font-medium hover:shadow-soft-ui hover:bg-blue-50"
+              onClick={() => navigate('/')}
             >
               Login
             </button>
-            <DemoLogin />
           </div>
         </div>
       </div>
@@ -99,4 +101,4 @@ const LoginComponent = () => {
   )
 }
 
-export default LoginComponent
+export default SignUpPage
