@@ -22,7 +22,6 @@ const LoginComponent = () => {
         const user = userCredential.user
         const refreshToken = userCredential._tokenResponse.refreshToken
         sessionStorage.setItem('Auth Token', refreshToken)
-        console.log('user', user)
 
         //ananya.dhananjaya1998@gmail.com
         //test123

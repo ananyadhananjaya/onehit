@@ -25,8 +25,6 @@ const SignUpPage = () => {
       })
       .catch((error) => {
         const errorCode = error.code
-        console.log(errorCode)
-        const errorMessage = error.message
         switch (errorCode) {
           case 'auth/wrong-password':
             setErrorMessage('Invalid Password')

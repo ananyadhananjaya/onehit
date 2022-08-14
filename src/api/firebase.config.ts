@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore/lite'
 import { getAuth } from 'firebase/auth'
+import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDhoeYZ3XT01VDlKxoHH9YbFS6uWbQVFc4',
@@ -14,6 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 export const db = getFirestore(app)
 export const auth = getAuth(app)
+export const storage = getStorage(app)
 
 // createUserWithEmailAndPassword(auth, email, password)
 //   .then((userCredential) => {
