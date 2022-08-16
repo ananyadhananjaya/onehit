@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react'
 import { auth, storage } from '../../api/firebase.config'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import LinkCardComponent from '../../components/LinkCardComponent'
+import { FiEdit2 } from 'react-icons/fi'
+import { MdOutlineEmail } from 'react-icons/md'
+import { BsTelephone } from 'react-icons/bs'
 
 const MainPage = () => {
   const navigate = useNavigate()
@@ -164,15 +167,37 @@ const MainPage = () => {
             <div className="text-slate-500">Software Engineer</div>
             <div className="text-slate-500">Los Angeles, California</div>
           </div>
-          <div>
-            <div className="text-sm font-bold text-slate-500">{email}</div>
-            <div className="text-sm font-bold text-slate-500">
-              +01 7698 98897
+          <div className="flex flex-col justify-end items-end gap-1">
+            <div className="text-sm flex font-bold text-slate-500">
+              <div className="flex  items-center">
+                <div className="hover:cursor-pointer hover:bg-slate-200 rounded-full p-2 hover:scale-110">
+                  <FiEdit2
+                    size={16}
+                    fontWeight="regular"
+                    className="text-gray-400"
+                  />
+                </div>
+              </div>
+              <div className="hover:cursor-pointer p-2 hover:bg-slate-200  rounded-full p-2 hover:scale-110">
+                Edit
+              </div>
+            </div>
+            <div className="text-sm flex font-bold text-slate-500 gap-2">
+              <div className="flex  items-center">
+                <MdOutlineEmail size={20} />
+              </div>
+              <div>{email}</div>
+            </div>
+            <div className="text-sm flex font-bold text-slate-500 gap-1">
+              <div className="flex  items-center">
+                <BsTelephone size={18} />
+              </div>
+              <div> +01 7698 98897</div>
             </div>
           </div>
         </div>
       </div>
-      <div className="w-9/12 pt-10 flex flex-wrap justify-center gap-y-8 gap-x-4">
+      <div className="w-9/12 pt-10 flex flex-wrap justify-center gap-y-8 gap-x-6">
         <LinkCardComponent />
         <LinkCardComponent />
 
