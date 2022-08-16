@@ -7,8 +7,8 @@ import SignUpPage from './Pages/SignUpPage'
 
 function App() {
   return (
-    <div className="bg-blue-50 min-h-screen relative">
-      <div className="">
+    <div className="bg-blue-50 min-h-screen relative ">
+      <div className="container mx-auto">
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
@@ -16,7 +16,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center pt-16">
         <FooterComponent />
       </div>
     </div>
