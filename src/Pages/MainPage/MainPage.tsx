@@ -1,4 +1,9 @@
-import { getAuth, signOut, updateProfile } from 'firebase/auth'
+import {
+  getAuth,
+  signOut,
+  updateProfile,
+  onAuthStateChanged
+} from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { auth, storage } from '../../api/firebase.config'
@@ -26,17 +31,23 @@ const MainPage = () => {
     if (!authToken) {
       navigate('/')
     }
-    const user = auth.currentUser
 
-    if (user !== null) {
-      user.providerData.forEach((profile) => {
-        setEmail(profile.email)
-        setDisplayname(profile.displayName)
-      })
-    }
-    if (auth.currentUser) {
-      setImgUrl(auth.currentUser.photoURL)
-    }
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user)
+        if (user !== null) {
+          user.providerData.forEach((profile) => {
+            setEmail(profile.email)
+            setDisplayname(profile.displayName)
+          })
+        }
+        if (auth.currentUser) {
+          setImgUrl(auth.currentUser.photoURL)
+        }
+      } else {
+        console.log('logged ot')
+      }
+    })
   }, [])
 
   useEffect(() => {
@@ -60,96 +71,8 @@ const MainPage = () => {
       })
   }
 
-  const updateName = () => {
-    if (auth.currentUser) {
-      updateProfile(auth.currentUser, {
-        displayName: username
-      })
-        .then(() => {
-          // Profile updated!
-          setDisplayname(username)
-        })
-        .catch((error) => {
-          // An error occurred
-          console.log(error)
-        })
-    }
-  }
-
-  const handleUpload = async (file: any) => {
-    if (auth.currentUser) {
-      const fileRef = ref(storage, auth.currentUser.uid + '.jpg')
-      const snapshot = await uploadBytes(fileRef, file)
-      const picURL = await getDownloadURL(fileRef)
-      updateProfile(auth.currentUser, {
-        photoURL: picURL
-      })
-        .then(() => {
-          // Profile updated!
-          setImgUrl(picURL)
-        })
-        .catch((error) => {
-          // An error occurred
-          console.log(error)
-        })
-    }
-  }
-
-  const handlePictureInput = (e: any) => {
-    setFile(e.target.files[0])
-  }
-
   return (
     <div className="flex flex-col gap-2 p-2 items-center bg-blue-50">
-      {/* <div className="flex flex-col gap-4">
-        <div>
-          <div className="my-3">Username</div>
-          <div>
-            <input
-              className="bg-blue-50 my-2 rounded-xl p-2 w-72 shadow-soft-ui focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
-              type="text"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-        </div>
-        <div>
-          <button
-            className="bg-blue-100 px-8 rounded-xl p-2 shadow-2xl text-gray-600 font-medium hover:shadow-soft-ui hover:bg-blue-50"
-            onClick={updateName}
-          >
-            Update Name!
-          </button>
-        </div>
-        <div>
-          <button
-            className="bg-blue-100 px-8 rounded-xl p-2 shadow-2xl text-gray-600 font-medium hover:shadow-soft-ui hover:bg-blue-50"
-            onClick={handleSignOut}
-          >
-            Sign Out!
-          </button>
-        </div>
-      </div>
-      <div>
-        <input type="file" onChange={handlePictureInput} />
-      </div>
-      <div>
-        <button
-          className={`${
-            file && file.name && file.name.length > 0
-              ? 'bg-blue-100 px-8 rounded-xl p-2 shadow-2xl text-gray-600 font-medium hover:shadow-soft-ui hover:bg-blue-50'
-              : 'bg-blue-50 px-8 rounded-xl p-2 shadow-2xl text-gray-600 font-medium'
-          }`}
-          onClick={() => handleUpload(file)}
-          disabled={!(file && file.name && file.name.length > 0)}
-        >
-          Upload
-        </button>
-      </div>
-      <div>
-        <img src={imgUrl} alt="avatar" className="rounded-full w-48 h-48" />
-      </div>
-      <div>Welcome {email}</div>
-      <div>Welcome {displayname}</div> */}
       <div className="w-11/12 md:h-80 h-max-content p-2 flex flex-col bg-slate-50 rounded-xl ">
         <div className="w-full h-40 bg-slate-300 rounded-tr-xl rounded-tl-xl"></div>
         <div className="flex rounded-full w-36 h-36 bg-slate-50 relative bottom-12 left-2">
@@ -168,15 +91,16 @@ const MainPage = () => {
             <div className="text-slate-500">Los Angeles, California</div>
           </div>
           <div className="flex flex-col justify-end items-end gap-1">
-            <div className="text-sm flex font-bold text-slate-500">
-              <div className="flex  items-center">
-                <div className="hover:cursor-pointer hover:bg-slate-200 rounded-full p-2 hover:scale-110">
-                  <FiEdit2
-                    size={16}
-                    fontWeight="regular"
-                    className="text-gray-400"
-                  />
-                </div>
+            <div
+              className="text-sm flex font-bold text-slate-500"
+              onClick={() => navigate('/editUser')}
+            >
+              <div className="flex  items-centerhover:cursor-pointer hover:bg-slate-200 rounded-full p-2 hover:scale-110">
+                <FiEdit2
+                  size={16}
+                  fontWeight="regular"
+                  className="text-gray-400"
+                />
               </div>
               <div className="hover:cursor-pointer p-2 hover:bg-slate-200  rounded-full p-2 hover:scale-110">
                 Edit
