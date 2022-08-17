@@ -1,13 +1,7 @@
-import {
-  getAuth,
-  signOut,
-  updateProfile,
-  onAuthStateChanged
-} from 'firebase/auth'
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { auth, storage } from '../../api/firebase.config'
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { auth } from '../../api/firebase.config'
 import LinkCardComponent from '../../components/LinkCardComponent'
 import { FiEdit2 } from 'react-icons/fi'
 import { MdOutlineEmail } from 'react-icons/md'
@@ -15,6 +9,8 @@ import { BsTelephone } from 'react-icons/bs'
 import createLink from '../../api/createLink'
 import updateLink from '../../api/updateLink'
 import getLinks from '../../api/getLinks'
+import { useDispatch, useSelector } from 'react-redux'
+import { signingOot } from '../../stateManagement/reducers/userReducer'
 
 interface LinkType {
   link: string
@@ -23,11 +19,10 @@ interface LinkType {
 
 const MainPage = () => {
   const navigate = useNavigate()
-  const [username, setUsername] = useState<string>('')
+  const dispatch = useDispatch()
   const [displayname, setDisplayname] = useState<string | null>('')
   const [imgUrl, setImgUrl] = useState<any>()
   const [email, setEmail] = useState<string | null>('')
-  const [file, setFile] = useState<any>()
   const [allLinks, setAllLinks] = useState<LinkType[]>([])
 
   useEffect(() => {
@@ -70,7 +65,7 @@ const MainPage = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        console.log('sign out')
+        dispatch(signingOot())
         navigate('/')
         sessionStorage.clear()
       })

@@ -1,11 +1,15 @@
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { auth } from '../../api/firebase.config'
+import { signingIn } from '../../stateManagement/reducers/userReducer'
 import DemoLogin from '../DemoLogin'
 
 const LoginComponent = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const status = useSelector((state: any) => state.user.signIn)
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [errorMessage, setErrorMessage] = useState<string>('')
@@ -19,12 +23,10 @@ const LoginComponent = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential: any) => {
         // Signed in
-        const user = userCredential.user
         const refreshToken = userCredential._tokenResponse.refreshToken
         sessionStorage.setItem('Auth Token', refreshToken)
-
-        //ananya.dhananjaya1998@gmail.com
-        //test123
+        dispatch(signingIn())
+        console.log(status)
         navigate('/onehit')
       })
       .catch((error) => {
