@@ -9,7 +9,6 @@ import DemoLogin from '../DemoLogin'
 const LoginComponent = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const status = useSelector((state: any) => state.user.signIn)
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [errorMessage, setErrorMessage] = useState<string>('')
@@ -26,7 +25,6 @@ const LoginComponent = () => {
         const refreshToken = userCredential._tokenResponse.refreshToken
         sessionStorage.setItem('Auth Token', refreshToken)
         dispatch(signingIn())
-        console.log(status)
         navigate('/onehit')
       })
       .catch((error) => {

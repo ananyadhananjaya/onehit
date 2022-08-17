@@ -13,7 +13,6 @@ const EditPage = () => {
   const navigate = useNavigate()
   const [username, setUsername] = useState<string>('')
   const [displayname, setDisplayname] = useState<string | null>('')
-  const [phoneNumber, setPhoneNumber] = useState<string | null>('')
   const [imgUrl, setImgUrl] = useState<any>()
   const [email, setEmail] = useState<string | null>('')
   const [file, setFile] = useState<any>()
@@ -30,8 +29,6 @@ const EditPage = () => {
         if (auth.currentUser) {
           setImgUrl(auth.currentUser.photoURL)
         }
-      } else {
-        console.log('logged ot')
       }
     })
   }, [])
