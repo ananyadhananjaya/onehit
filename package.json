@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint src"
+    "lint": "eslint --ext .tsx --ext .ts src"
   },
   "dependencies": {
     "@ananyadhananjaya/eslint-config-basic": "^4.0.0",
