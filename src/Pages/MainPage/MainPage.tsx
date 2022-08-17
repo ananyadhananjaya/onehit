@@ -16,6 +16,11 @@ import createLink from '../../api/createLink'
 import updateLink from '../../api/updateLink'
 import getLinks from '../../api/getLinks'
 
+interface LinkType {
+  link: string
+  linkType: string
+}
+
 const MainPage = () => {
   const navigate = useNavigate()
   const [username, setUsername] = useState<string>('')
@@ -23,6 +28,7 @@ const MainPage = () => {
   const [imgUrl, setImgUrl] = useState<any>()
   const [email, setEmail] = useState<string | null>('')
   const [file, setFile] = useState<any>()
+  const [allLinks, setAllLinks] = useState<LinkType[]>([])
 
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
@@ -37,12 +43,12 @@ const MainPage = () => {
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user)
         if (user !== null) {
           user.providerData.forEach((profile) => {
             setEmail(profile.email)
             setDisplayname(profile.displayName)
           })
+          getLinks(auth.currentUser?.uid).then((data) => setAllLinks(data))
         }
         if (auth.currentUser) {
           setImgUrl(auth.currentUser.photoURL)
@@ -77,11 +83,7 @@ const MainPage = () => {
   const addNewLink = () => {
     console.log(auth.currentUser?.uid)
     console.log(
-      createLink(
-        auth.currentUser?.uid,
-        'Github',
-        'https://github.com/ananyadhananjaya'
-      )
+      createLink(auth.currentUser?.uid, 'Instagram', 'https://instagram.com')
     )
   }
 
@@ -161,16 +163,24 @@ const MainPage = () => {
         >
           Get Links
         </div>
+        <div
+          className="px-4 py-2 bg-blue-300 rounded-full hover:shadow-xl shadow-2xl hover:cursor-pointer"
+          onClick={handleSignOut}
+        >
+          Sign Out!
+        </div>
       </div>
       <div className="w-9/12 pt-10 flex flex-wrap justify-center gap-y-8 gap-x-6">
-        <LinkCardComponent />
-        <LinkCardComponent />
-
-        <LinkCardComponent />
-        <LinkCardComponent />
-
-        <LinkCardComponent />
-        <LinkCardComponent />
+        {allLinks.map((item) => {
+          return (
+            <LinkCardComponent
+              key={item.link}
+              link={item.link}
+              linkType={item.linkType}
+              userId={auth.currentUser?.uid}
+            />
+          )
+        })}
       </div>
     </div>
   )
