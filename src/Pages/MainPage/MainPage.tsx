@@ -6,11 +6,10 @@ import LinkCardComponent from '../../components/LinkCardComponent'
 import { FiEdit2 } from 'react-icons/fi'
 import { MdOutlineEmail } from 'react-icons/md'
 import { BsTelephone } from 'react-icons/bs'
-import createLink from '../../api/createLink'
-import updateLink from '../../api/updateLink'
 import getLinks from '../../api/getLinks'
-import { useDispatch, useSelector } from 'react-redux'
-import { signingOot } from '../../stateManagement/reducers/userReducer'
+import { useDispatch } from 'react-redux'
+import { signingout } from '../../stateManagement/reducers/userReducer'
+import { addLink } from '../../stateManagement/reducers/linksReducer'
 
 interface LinkType {
   link: string
@@ -24,6 +23,7 @@ const MainPage = () => {
   const [imgUrl, setImgUrl] = useState<any>()
   const [email, setEmail] = useState<string | null>('')
   const [allLinks, setAllLinks] = useState<LinkType[]>([])
+  const [addNewLink, setAddNewLink] = useState<boolean>(false)
 
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
@@ -43,13 +43,14 @@ const MainPage = () => {
             setEmail(profile.email)
             setDisplayname(profile.displayName)
           })
-          getLinks(auth.currentUser?.uid).then((data) => setAllLinks(data))
+          getLinks(auth.currentUser?.uid).then((data) => {
+            setAllLinks(data)
+            dispatch(addLink(data))
+          })
         }
         if (auth.currentUser) {
           setImgUrl(auth.currentUser.photoURL)
         }
-      } else {
-        console.log('logged ot')
       }
     })
   }, [])
@@ -65,7 +66,7 @@ const MainPage = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        dispatch(signingOot())
+        dispatch(signingout())
         navigate('/')
         sessionStorage.clear()
       })
@@ -75,18 +76,11 @@ const MainPage = () => {
       })
   }
 
-  const addNewLink = () => {
-    console.log(auth.currentUser?.uid)
-    console.log(
-      createLink(auth.currentUser?.uid, 'Instagram', 'https://instagram.com')
-    )
-  }
-
   const fetchLink = () => {
-    getLinks(auth.currentUser?.uid)
-  }
-  const handleUpdateLink = () => {
-    console.log(updateLink(auth.currentUser?.uid, 'IG', 'test'))
+    getLinks(auth.currentUser?.uid).then((data: any[]) => {
+      setAllLinks(data)
+      dispatch(addLink(data))
+    })
   }
 
   return (
@@ -142,16 +136,11 @@ const MainPage = () => {
       <div className="mt-4 flex gap-4">
         <div
           className="px-4 py-2 bg-blue-300 rounded-full hover:shadow-xl shadow-2xl hover:cursor-pointer"
-          onClick={addNewLink}
+          onClick={() => setAddNewLink(!addNewLink)}
         >
           Add New Link
         </div>
-        <div
-          className="px-4 py-2 bg-blue-300 rounded-full hover:shadow-xl shadow-2xl hover:cursor-pointer"
-          onClick={handleUpdateLink}
-        >
-          Update Link
-        </div>
+
         <div
           className="px-4 py-2 bg-blue-300 rounded-full hover:shadow-xl shadow-2xl hover:cursor-pointer"
           onClick={fetchLink}
@@ -166,6 +155,16 @@ const MainPage = () => {
         </div>
       </div>
       <div className="w-9/12 pt-10 flex flex-wrap justify-center gap-y-8 gap-x-6">
+        {addNewLink && (
+          <LinkCardComponent
+            key="testKey"
+            link=""
+            linkType=""
+            userId={auth.currentUser?.uid}
+            fetchLink={fetchLink}
+            setAddNewLink={setAddNewLink}
+          />
+        )}
         {allLinks.map((item) => {
           return (
             <LinkCardComponent
@@ -173,6 +172,8 @@ const MainPage = () => {
               link={item.link}
               linkType={item.linkType}
               userId={auth.currentUser?.uid}
+              fetchLink={fetchLink}
+              setAddNewLink={setAddNewLink}
             />
           )
         })}
