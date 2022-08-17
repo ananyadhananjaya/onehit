@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@ananyadhananjaya/eslint-config-basic": "^4.0.0",
+    "@reduxjs/toolkit": "^1.8.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2"
   },
   "devDependencies": {
     "@ananyadhananjaya/prettier-config": "^1.0.0",
