@@ -12,6 +12,9 @@ import LinkCardComponent from '../../components/LinkCardComponent'
 import { FiEdit2 } from 'react-icons/fi'
 import { MdOutlineEmail } from 'react-icons/md'
 import { BsTelephone } from 'react-icons/bs'
+import createLink from '../../api/createLink'
+import updateLink from '../../api/updateLink'
+import getLinks from '../../api/getLinks'
 
 const MainPage = () => {
   const navigate = useNavigate()
@@ -71,6 +74,24 @@ const MainPage = () => {
       })
   }
 
+  const addNewLink = () => {
+    console.log(auth.currentUser?.uid)
+    console.log(
+      createLink(
+        auth.currentUser?.uid,
+        'Github',
+        'https://github.com/ananyadhananjaya'
+      )
+    )
+  }
+
+  const fetchLink = () => {
+    getLinks(auth.currentUser?.uid)
+  }
+  const handleUpdateLink = () => {
+    console.log(updateLink(auth.currentUser?.uid, 'IG', 'test'))
+  }
+
   return (
     <div className="flex flex-col gap-2 p-2 items-center bg-blue-50">
       <div className="w-11/12 md:h-80 h-max-content p-2 flex flex-col bg-slate-50 rounded-xl ">
@@ -119,6 +140,26 @@ const MainPage = () => {
               <div> +01 7698 98897</div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="mt-4 flex gap-4">
+        <div
+          className="px-4 py-2 bg-blue-300 rounded-full hover:shadow-xl shadow-2xl hover:cursor-pointer"
+          onClick={addNewLink}
+        >
+          Add New Link
+        </div>
+        <div
+          className="px-4 py-2 bg-blue-300 rounded-full hover:shadow-xl shadow-2xl hover:cursor-pointer"
+          onClick={handleUpdateLink}
+        >
+          Update Link
+        </div>
+        <div
+          className="px-4 py-2 bg-blue-300 rounded-full hover:shadow-xl shadow-2xl hover:cursor-pointer"
+          onClick={fetchLink}
+        >
+          Get Links
         </div>
       </div>
       <div className="w-9/12 pt-10 flex flex-wrap justify-center gap-y-8 gap-x-6">
