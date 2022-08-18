@@ -1,8 +1,9 @@
 import LoginComponent from '../../components/LoginComponent'
+import Spline from '@splinetool/react-spline'
 
 const LoginPage = () => {
   return (
-    <div className="h-2/3 flex flex-col justify-center items-center">
+    <div>
       <LoginComponent />
     </div>
   )

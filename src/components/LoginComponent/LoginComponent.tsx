@@ -51,7 +51,7 @@ const LoginComponent = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col justify-center p-10 items-center bg-blue-50">
+      <div className="flex flex-col justify-center p-10 items-center ">
         <div className="items-start">
           <div className="my-8 text-2xl font-medium text-center text-gray-600">
             Sign In!
