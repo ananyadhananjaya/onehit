@@ -12,6 +12,8 @@
   "dependencies": {
     "@ananyadhananjaya/eslint-config-basic": "^4.0.0",
     "@reduxjs/toolkit": "^1.8.4",
+    "@splinetool/react-spline": "^2.2.1",
+    "@splinetool/runtime": "^0.9.98",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2"

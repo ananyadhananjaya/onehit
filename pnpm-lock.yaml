@@ -4,6 +4,8 @@ specifiers:
   '@ananyadhananjaya/eslint-config-basic': ^4.0.0
   '@ananyadhananjaya/prettier-config': ^1.0.0
   '@reduxjs/toolkit': ^1.8.4
+  '@splinetool/react-spline': ^2.2.1
+  '@splinetool/runtime': ^0.9.98
   '@types/react': ^18.0.15
   '@types/react-dom': ^18.0.6
   '@typescript-eslint/eslint-plugin': ^5.31.0
@@ -26,6 +28,8 @@ specifiers:
 dependencies:
   '@ananyadhananjaya/eslint-config-basic': 4.0.0_eslint@8.20.0
   '@reduxjs/toolkit': 1.8.4_kkwg4cbsojnjnupd3btipussee
+  '@splinetool/react-spline': 2.2.1_opjgb7hcbrp3okyipzcikbjq3e
+  '@splinetool/runtime': 0.9.98
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-redux: 8.0.2_v7vsrdtui4d36prbwvdnlb7tpq
@@ -984,6 +988,25 @@ packages:
       redux: 4.2.0
       redux-thunk: 2.4.1_redux@4.2.0
       reselect: 4.1.6
+    dev: false
+
+  /@splinetool/react-spline/2.2.1_opjgb7hcbrp3okyipzcikbjq3e:
+    resolution: {integrity: sha512-GDVYDEhYn9AjUbOWMpg2qIAtH3yYuw0itiG/lcNv5H1WZ5R3E3TjcNvyVou2td/16DW9m03N5cI/WVKGgsSFxg==}
+    peerDependencies:
+      '@splinetool/runtime': '*'
+      react: '>=17.0.0'
+      react-dom: '>=17.0.0'
+    dependencies:
+      '@splinetool/runtime': 0.9.98
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-merge-refs: 1.1.0
+    dev: false
+
+  /@splinetool/runtime/0.9.98:
+    resolution: {integrity: sha512-Ud42x+1PdmKu4K1sqcHFRty+maHBdTtI0keN2BngeTGgg4X9WeEpUaml7Y5TTDrjJ8CQ+8SOHY9pICWtoJ9zrQ==}
+    dependencies:
+      on-change: 4.0.1
     dev: false
 
   /@types/hoist-non-react-statics/3.3.1:
@@ -2530,6 +2553,11 @@ packages:
       es-abstract: 1.20.1
     dev: true
 
+  /on-change/4.0.1:
+    resolution: {integrity: sha512-Gxmr/8NsLTigoUUEPvnAIUGl7uxwfC3Mm1G+qTmODEZcT4ZGfeaFyQgfGCdbKVS2pICIFYB82RH6MUHToPcS4Q==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
+
   /once/1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
@@ -2752,6 +2780,10 @@ packages:
 
   /react-is/18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+    dev: false
+
+  /react-merge-refs/1.1.0:
+    resolution: {integrity: sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==}
     dev: false
 
   /react-redux/8.0.2_v7vsrdtui4d36prbwvdnlb7tpq:
