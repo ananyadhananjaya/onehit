@@ -11,7 +11,7 @@ import SignUpPage from './Pages/SignUpPage'
 function App() {
   return (
     <div className="bg-blue-50 h-screen relative">
-      <div className="container mx-auto">
+      <div className="mx-auto">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />

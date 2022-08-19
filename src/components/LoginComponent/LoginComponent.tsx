@@ -51,7 +51,7 @@ const LoginComponent = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col justify-center p-10 items-center ">
+      <div className="absolute inset-0 flex flex-col p-10 justify-center items-center">
         <div className="items-start">
           <div className="my-8 text-2xl font-medium text-center text-slate-100">
             Sign In!

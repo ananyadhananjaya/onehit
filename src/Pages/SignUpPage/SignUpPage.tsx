@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../api/firebase.config'
+import Spline from '@splinetool/react-spline'
 
 const SignUpPage = () => {
   const navigate = useNavigate()
@@ -51,17 +52,18 @@ const SignUpPage = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col p-10 justify-center items-center bg-blue-50">
-        <div className="items-start">
-          <div className="my-8 text-2xl font-medium text-center text-gray-600">
+
+      <div className=" bg-blue-50 bg-slate-900 h-screen relative">
+        <Spline scene="https://prod.spline.design/0sFGapfOgEyRi8FA/scene.splinecode" />
+        <div className="items-start absolute inset-0 flex flex-col p-10 justify-center items-center">
+          <div className="my-8 text-2xl font-medium text-center text-slate-100">
             Sign Up!
           </div>
-
           <div>
-            <div className="my-3">Email</div>
+            <div className="my-3 text-slate-300">Email</div>
             <div>
               <input
-                className="bg-blue-50 my-2 rounded-xl p-2 w-72 shadow-soft-ui focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
+                className="bg-blue-50 my-2 rounded-xl p-2 w-72  focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
                 type="text"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -69,10 +71,10 @@ const SignUpPage = () => {
           </div>
 
           <div>
-            <div className="my-3">Password</div>
+            <div className="my-3 text-slate-300">Password</div>
             <div>
               <input
-                className="bg-blue-50 my-2 rounded-xl p-2 w-72 shadow-soft-ui focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
+                className="bg-blue-50 my-2 rounded-xl p-2 w-72  focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
                 type="text"
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -81,14 +83,14 @@ const SignUpPage = () => {
 
           <div className="flex gap-4 my-5 items-center">
             <button
-              className="bg-blue-100 px-8 rounded-xl p-2 shadow-2xl text-gray-600 font-medium hover:shadow-soft-ui hover:bg-blue-50"
+              className="bg-blue-100 w-32 rounded-xl py-2 shadow-2xl text-gray-600 font-medium  hover:bg-red-500 hover:text-slate-200"
               onClick={signUp}
             >
               Sign Up
             </button>
             <button
-              className="bg-blue-100 px-8 rounded-xl p-2 w-32 shadow-2xl text-gray-600 font-medium hover:shadow-soft-ui hover:bg-blue-50"
-              onClick={() => navigate('/')}
+              className="bg-blue-100  rounded-xl py-2 w-32 shadow-2xl text-gray-600 font-medium hover:bg-blue-600 hover:text-slate-200"
+              onClick={() => navigate('/login')}
             >
               Login
             </button>
