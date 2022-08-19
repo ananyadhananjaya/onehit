@@ -1,6 +1,6 @@
 const FooterComponent = () => {
   return (
-    <div className="bottom-2 absolute text-slate-500 text-sm">
+    <div className="bottom-2 absolute text-slate-200 text-sm">
       Released under the MIT License. Copyright © {new Date().getFullYear()}{' '}
       Ananya Dhananjaya
     </div>

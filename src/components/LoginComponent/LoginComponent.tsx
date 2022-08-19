@@ -46,46 +46,46 @@ const LoginComponent = () => {
     <>
       <div className="top-0 absolute">
         {errorFlag && (
-          <div className="bg-red-500 w-screen p-2 rounded-sm text-center text-slate-100">
+          <div className="bg-red-500 p-2 rounded-sm text-center text-slate-100">
             {errorMessage}
           </div>
         )}
       </div>
       <div className="flex flex-col justify-center p-10 items-center ">
         <div className="items-start">
-          <div className="my-8 text-2xl font-medium text-center text-gray-600">
+          <div className="my-8 text-2xl font-medium text-center text-slate-100">
             Sign In!
           </div>
 
           <div>
-            <div className="my-3">Email</div>
+            <div className="my-3 text-slate-300">Email</div>
             <div>
               <input
-                className="bg-blue-50 my-2 rounded-xl p-2 w-72 shadow-soft-ui focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
+                className="bg-blue-50 my-2 rounded-xl p-2 w-72  focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
                 type="text"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
           <div>
-            <div className="my-3">Password</div>
+            <div className="my-3 text-slate-300">Password</div>
             <div>
               <input
-                className="bg-blue-50 my-2 rounded-xl p-2 w-72 shadow-soft-ui focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
+                className="bg-blue-50 my-2 rounded-xl p-2 w-72 focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
                 type="text"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
-          <div className="text-slate-500 py-2 hover:text-slate-700">
+          <div className="text-slate-50 py-2 hover:text-slate-300">
             New User?{' '}
-            <Link className="hover:text-blue-500" to="/signup">
+            <Link className="hover:text-pink-500" to="/signup">
               Sign up!
             </Link>
           </div>
           <div className="flex gap-2 my-5 items-center">
             <button
-              className="bg-blue-100 px-8 rounded-xl p-2 shadow-2xl text-gray-600 font-medium hover:shadow-soft-ui hover:bg-blue-50"
+              className="bg-blue-600 px-8 rounded-xl p-2 shadow-2xl text-slate-200 font-medium hover:scale-x-110 hover:bg-blue-500"
               onClick={login}
             >
               Login
