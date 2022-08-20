@@ -10,7 +10,7 @@ import SignUpPage from './Pages/SignUpPage'
 
 function App() {
   return (
-    <div className="bg-blue-50 max-h-content relative">
+    <div className="bg-blue-50 max-h-content relative ">
       <div className="mx-auto">
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -22,9 +22,6 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
-      {/* <div className="flex justify-center">
-        <FooterComponent />
-      </div> */}
     </div>
   )
 }

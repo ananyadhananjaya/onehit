@@ -1,5 +1,6 @@
 import Spline from '@splinetool/react-spline'
 import { useNavigate } from 'react-router-dom'
+import FooterComponent from '../../components/FooterComponent'
 
 const LandingPage = () => {
   const navigate = useNavigate()
@@ -27,6 +28,9 @@ const LandingPage = () => {
         >
           Get Started!
         </button>
+      </div>
+      <div className="flex justify-center">
+        <FooterComponent />
       </div>
     </div>
   )

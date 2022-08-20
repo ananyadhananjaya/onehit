@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../api/firebase.config'
 import Spline from '@splinetool/react-spline'
+import FooterComponent from '../../components/FooterComponent'
 
 const SignUpPage = () => {
   const navigate = useNavigate()
@@ -95,6 +96,9 @@ const SignUpPage = () => {
               Login
             </button>
           </div>
+        </div>
+        <div className="flex justify-center">
+          <FooterComponent />
         </div>
       </div>
     </>

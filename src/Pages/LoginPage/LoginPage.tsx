@@ -1,5 +1,6 @@
 import LoginComponent from '../../components/LoginComponent'
 import Spline from '@splinetool/react-spline'
+import FooterComponent from '../../components/FooterComponent'
 
 const LoginPage = () => {
   return (
@@ -8,6 +9,9 @@ const LoginPage = () => {
 
       <div className="absolute inset-0">
         <LoginComponent />
+      </div>
+      <div className="flex justify-center">
+        <FooterComponent />
       </div>
     </div>
   )
