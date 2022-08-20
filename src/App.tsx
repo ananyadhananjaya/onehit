@@ -6,6 +6,7 @@ import LandingPage from './Pages/LandingPage'
 import LoginPage from './Pages/LoginPage'
 import MainPage from './Pages/MainPage'
 import PageNotFound from './Pages/PageNotFound'
+import PublicPage from './Pages/PublicPage'
 import SignUpPage from './Pages/SignUpPage'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/onehit" element={<MainPage />} />
           <Route path="/editUser" element={<EditPage />} />
+          <Route path="/onehit/:userId" element={<PublicPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
