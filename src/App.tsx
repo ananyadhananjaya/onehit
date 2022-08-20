@@ -1,4 +1,3 @@
-import Spline from '@splinetool/react-spline'
 import { Routes, Route } from 'react-router-dom'
 import FooterComponent from './components/FooterComponent'
 import EditPage from './Pages/EditPage'
@@ -11,7 +10,7 @@ import SignUpPage from './Pages/SignUpPage'
 
 function App() {
   return (
-    <div className="bg-blue-50 h-screen relative">
+    <div className="bg-blue-50 max-h-content relative">
       <div className="mx-auto">
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -23,9 +22,9 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <FooterComponent />
-      </div>
+      </div> */}
     </div>
   )
 }

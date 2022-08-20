@@ -34,7 +34,7 @@ const LinkCardComponent = (props: Props) => {
   }
 
   return (
-    <div className="bg-slate-50 p-2 px-4 text-sm flex gap-4 items-center whitespace-normal shadow-soft-ui-v2 rounded-lg hover:scale-110">
+    <div className="bg-slate-50 p-2 px-4 text-sm flex flex-wrap gap-4 items-center whitespace-normal shadow-soft-ui-v2 rounded-lg hover:scale-110 duration-300">
       <div className="flex flex-col gap-4 w-64 h-24 ">
         <div className="flex flex-col gap-4">
           {editFlag ? (
@@ -78,7 +78,7 @@ const LinkCardComponent = (props: Props) => {
         </div>
       </div>
       <div className="text-gray-400 flex flex-col gap-4 hover:cursor-pointer">
-        <div className="hover:text-gray-800" onClick={handleDelete}>
+        <div className="hover:text-pink-800" onClick={handleDelete}>
           <AiOutlineDelete size={20} />
         </div>
         <div
