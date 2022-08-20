@@ -1,6 +1,6 @@
 import Spline from '@splinetool/react-spline'
 import { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import getLinks from '../../api/getLinks'
 import PublicLinkCard from '../../components/PublicLinkCard'
 
