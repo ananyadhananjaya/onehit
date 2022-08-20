@@ -10,7 +10,7 @@ import SignUpPage from './Pages/SignUpPage'
 
 function App() {
   return (
-    <div className="bg-blue-50 max-h-content relative ">
+    <div className="bg-blue-50 max-h-content relative">
       <div className="mx-auto">
         <Routes>
           <Route path="/" element={<LandingPage />} />

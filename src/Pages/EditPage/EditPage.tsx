@@ -1,9 +1,4 @@
-import {
-  onAuthStateChanged,
-  updateEmail,
-  updatePhoneNumber,
-  updateProfile
-} from 'firebase/auth'
+import { onAuthStateChanged, updateEmail, updateProfile } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { auth, storage } from '../../api/firebase.config'
@@ -86,7 +81,7 @@ const EditPage = () => {
     setFile(e.target.files[0])
   }
   return (
-    <div className="flex flex-col p-10 justify-center items-center bg-blue-50">
+    <div className="flex flex-col p-10 justify-center h-screen items-center bg-blue-50">
       <div className="">
         <div className="flex justify-center pt-12">
           <div className="flex rounded-full w-36 h-36 bg-slate-50 relative bottom-12 left-2">

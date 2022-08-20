@@ -16,11 +16,11 @@ const TopBar: FunctionComponent<Props> = (props: Props) => {
     }
   }, [displayName])
   return (
-    <div className="flex justify-between p-2 items-center px-4 bg-slate-300 w-full h-14 shadow-lg rounded-tr rounded-tl">
-      <div className="tracking-wide font-medium text-lg text-slate-800">
+    <div className="flex justify-between p-2 items-center px-4 bg-gradient-to-r from-purple-500 to-pink-500 w-full h-14 shadow-lg rounded-tr rounded-tl">
+      <div className="tracking-wide font-medium text-lg text-slate-50">
         👋, {name}!
       </div>
-      <div className="text-slate-700 font-semibold">{email}</div>
+      <div className="text-slate-50 font-semibold">{email}</div>
     </div>
   )
 }

@@ -3,16 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { auth } from '../../api/firebase.config'
 import LinkCardComponent from '../../components/LinkCardComponent'
-import { FiEdit2 } from 'react-icons/fi'
-import { MdOutlineEmail } from 'react-icons/md'
-import { BsTelephone } from 'react-icons/bs'
 import getLinks from '../../api/getLinks'
 import { useDispatch } from 'react-redux'
 import { signingout } from '../../stateManagement/reducers/userReducer'
 import { addLink } from '../../stateManagement/reducers/linksReducer'
-import { MdOutlineContentCopy } from 'react-icons/md'
 import TopBar from '../../components/TopBar'
 import Sidebar from '../../components/Sidebar'
+import { HiClipboardCopy } from 'react-icons/hi'
 
 interface LinkType {
   link: string
@@ -106,9 +103,22 @@ const MainPage = () => {
         onEdit={handleEdit}
         publicLink={publicLink}
       />
-      <div className="flex flex-col gap-2 p-1  w-full items-center bg-blue-50">
+      <div className="flex flex-col gap-2 p-1  w-full items-center bg-slate-900">
         <TopBar displayName={displayname} email={email} />
-
+        <div className="flex gap-2">
+          <div
+            className="text-blue-400 underline hover:cursor-pointer hover:text-blue-500"
+            onClick={() => window.open(publicLink)}
+          >
+            My Onehit
+          </div>
+          <div
+            className="text-slate-300 hover:text-slate-200 hover:cursor-pointer"
+            onClick={() => navigator.clipboard.writeText(publicLink)}
+          >
+            <HiClipboardCopy size={24} />
+          </div>
+        </div>
         <div className="w-9/12  pt-10 flex flex-wrap justify-center gap-y-8 gap-x-6">
           {addNewLink && (
             <LinkCardComponent
