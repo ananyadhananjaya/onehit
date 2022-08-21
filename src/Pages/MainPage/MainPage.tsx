@@ -51,7 +51,9 @@ const MainPage = () => {
         }
         if (auth.currentUser) {
           setImgUrl(auth.currentUser.photoURL)
-          setPublicLink('http://127.0.0.1:5173/onehit/' + auth.currentUser.uid)
+          setPublicLink(
+            'https://onehit.netlify.app/onehit/' + auth.currentUser.uid
+          )
         }
       }
     })
@@ -60,7 +62,7 @@ const MainPage = () => {
   useEffect(() => {
     if (auth.currentUser) {
       setImgUrl(auth.currentUser.photoURL)
-      setPublicLink('http://127.0.0.1:5173/onehit/' + auth.currentUser.uid)
+      setPublicLink('https://onehit.netlify.app/onehit/' + auth.currentUser.uid)
     }
   }, [auth])
 

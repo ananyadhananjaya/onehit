@@ -85,8 +85,9 @@ const LoginComponent = () => {
           </div>
           <div className="flex gap-2 my-5 items-center">
             <button
-              className="bg-blue-600 px-8 rounded-xl p-2 shadow-2xl text-slate-200 font-medium hover:scale-x-110 hover:bg-blue-500"
+              className="bg-blue-600 px-8 rounded-xl p-2 shadow-2xl text-slate-200 font-medium hover:bg-blue-500"
               onClick={login}
+              disabled={email.length === 0 || password.length === 0}
             >
               Login
             </button>

@@ -43,7 +43,7 @@ const LinkCardComponent = (props: Props) => {
   return (
     <div className="bg-slate-50 p-2 px-4 text-sm flex flex-wrap items-center justify-between whitespace-normal rounded-lg hover:scale-110 duration-300">
       <div className="flex flex-col gap-4 w-64 h-24 ">
-        <div className="flex  flex-col gap-4">
+        <div className="flex flex-col gap-4">
           {editTypeFlag ? (
             <input
               type="text"
@@ -73,7 +73,7 @@ const LinkCardComponent = (props: Props) => {
               autoFocus={true}
             />
           ) : (
-            <div className="flex gap-2  py-2">
+            <div className="flex gap-2 py-2">
               <div className="truncate text-slate-700">{newLink} </div>
               <FiEdit2
                 size={16}

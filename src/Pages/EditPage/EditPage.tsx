@@ -81,7 +81,7 @@ const EditPage = () => {
     setFile(e.target.files[0])
   }
   return (
-    <div className="flex flex-col p-10 justify-center h-screen items-center bg-blue-50">
+    <div className="flex flex-col p-10 justify-center h-screen items-center bg-slate-900">
       <div className="">
         <div className="flex justify-center pt-12">
           <div className="flex rounded-full w-36 h-36 bg-slate-50 relative bottom-12 left-2">
@@ -93,20 +93,20 @@ const EditPage = () => {
           </div>
         </div>
         <div>
-          <div className="">Email</div>
+          <div className="text-slate-50">Email</div>
           <div>
             <input
-              className="bg-blue-50 my-2 rounded-xl p-2 w-72 shadow-soft-ui focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
+              className="bg-blue-50 my-2 rounded-xl p-2 w-72 focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
               type="text"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
         </div>
         <div>
-          <div className="">Username</div>
+          <div className="text-slate-50">Username</div>
           <div>
             <input
-              className="bg-blue-50 my-2 rounded-xl p-2 w-72 shadow-soft-ui focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
+              className="bg-blue-50 my-2 rounded-xl p-2 w-72 focus:text-gray-700 focus:bg-slate-50 focus:outline-none"
               type="text"
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -114,7 +114,7 @@ const EditPage = () => {
         </div>
 
         <div className="pt-2 flex flex-col gap-2">
-          <div className="">
+          <div className="text-slate-50">
             <input type="file" onChange={handlePictureInput} />
           </div>
           <div>
@@ -131,10 +131,10 @@ const EditPage = () => {
             </button>
           </div>
         </div>
-        <div className="pt-4 flex justify-between">
+        <div className="pt-4 flex gap-4">
           <button
             className={
-              'bg-blue-200 px-8 rounded-xl p-2 shadow-2xl text-gray-600 font-medium hover:shadow-soft-ui'
+              'bg-blue-400 px-8 rounded-xl p-2 shadow-2xl text-slate-50 font-medium hover:bg-blue-600 hover:text-slate-50'
             }
             onClick={() => handleUpdate()}
           >
@@ -142,11 +142,11 @@ const EditPage = () => {
           </button>
           <button
             className={
-              'bg-blue-200 px-8 rounded-xl p-2 shadow-2xl text-gray-600 font-medium hover:shadow-soft-ui'
+              'bg-blue-400 px-8 rounded-xl p-2 shadow-2xl text-slate-50 font-medium hover:bg-blue-600 hover:text-slate-50'
             }
             onClick={() => navigate('/onehit')}
           >
-            One Hit
+            Back
           </button>
         </div>
       </div>

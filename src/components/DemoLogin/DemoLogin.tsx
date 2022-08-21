@@ -27,7 +27,7 @@ const DemoLogin = () => {
   }
   return (
     <button
-      className="bg-red-200 px-10 rounded-xl p-2 shadow-2xl text-gray-600 font-medium hover:shadow-xl hover:bg-red-400 "
+      className="bg-violet-200 px-10 rounded-xl p-2 shadow-2xl text-gray-600 font-medium hover:shadow-xl hover:bg-purple-800 hover:text-slate-50"
       onClick={demoLogin}
     >
       Demo Login
